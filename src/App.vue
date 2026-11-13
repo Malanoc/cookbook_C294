@@ -1,21 +1,103 @@
 <script setup>
-  import AppHeader from'./components/AppHeader.vue'
+import AppHeader from './components/AppHeader.vue';
+import RecipeFooter from './components/RecipeFooter.vue';
+import RecipeList from './components/RecipeList.vue';
+
+
+// Les données de nos recettes
+const recipes = [
+    {
+        id: 1,
+        name: 'Spaghetti',
+        description: 'Délicieuses pâtes à la sauce tomate.',
+        time: 20,
+        difficulty: 'Facile',
+        emoji: '🍝',
+        persons: 3
+    },
+    {
+        id: 2,
+        name: 'Pizza',
+        description: 'Pizza maison aux légumes.',
+        time: 35,
+        difficulty: 'Moyen',
+        emoji: '🍕',
+        persons: 1
+    },
+    {
+        id: 3,
+        name: 'Gâteau',
+        description: 'Gâteau au chocolat fait maison.',
+        time: 45,
+        difficulty: 'Facile',
+        emoji: '🍰',
+        persons: 4
+    },
+    {
+        id: 4,
+        name: 'Salade',
+        description: 'Salade fraîche et croquante.',
+        time: 15,
+        difficulty: 'Facile',
+        emoji: '🥗',
+        persons: 2
+    },
+    {
+        id: 5,
+        name: 'Tacos',
+        description: 'Tacos mexicains épicés.',
+        time: 25,
+        difficulty: 'Difficile',
+        emoji: '🌮',
+        persons: 2
+    }
+];
 </script>
+
 <template>
-  <div>
-    <AppHeader />
-    <main>
-      <h1>Bienvenue dans ma cuisine !</h1>
-      <p> Découvrez des recettes simples et délicieuses. </p>
-    </main>
-  </div>
+    <div class="app">
+
+        <!-- Composant enfant : en-tête -->
+        <AppHeader />
+
+        <main>
+            <section class="hero">
+                <h1>Bienvenue dans ma cuisine !</h1>
+
+                <p>
+                    Découvrez des recettes simples
+                    et délicieuses.
+                </p>
+            </section>
+
+            <!-- Composant enfant : liste des recettes -->
+            <RecipeList :recipes="recipes" />
+        </main>
+
+        <footer>
+            <RecipeFooter />
+        </footer>
+
+    </div>
 </template>
+
 <style scoped>
-  main{
-  padding:40px;
-  text-align:center;
-  }
-  h1{
-  color:#173d35;
+.app {
+    min-height: 100vh;
+}
+
+.hero {
+    background: #e8f1ec;
+    padding: 50px 30px;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #173d35;
+    font-size: 32px;
+}
+
+.hero p {
+    color: #526b60;
 }
 </style>
